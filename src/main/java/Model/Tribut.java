@@ -1,11 +1,19 @@
 package Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Tribut {
+    @JsonProperty("id")
     int id;
+    @JsonProperty("name")
     String name;
+    @JsonProperty("district")
     int district;
-    int skillLevel;
+    @JsonProperty("status")
     TributStatus status;
+    @JsonProperty("skillLevel")
+    int skillLevel;
+
 
     public enum TributStatus {
         ALIVE("ALIVE"),
