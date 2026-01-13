@@ -24,5 +24,7 @@ public class MixController {
         System.out.println(EreignisService.countAll());
 
 
+
+
     }
 }

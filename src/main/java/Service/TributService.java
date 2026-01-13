@@ -4,6 +4,7 @@ package Service;
 import Model.Tribut;
 import Repo.TributRepo;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class TributService {
@@ -33,6 +34,22 @@ public class TributService {
     }
     public int countAll(){
         return TributRepo.countAll();
+    }
+
+    public List<Tribut> findByDistrict(int district){
+        List<Tribut> Tributs = TributRepo.readAll();
+        return Tributs.stream()
+                .filter(x -> x.getDistrict() == district && x.getStatus() == Tribut.TributStatus.ALIVE)
+                .toList();
+
+    }
+
+    public List<Tribut> sortBySkillLevelDesc(){
+        List<Tribut> Tributs = TributRepo.readAll();
+        return Tributs.stream()
+                .sorted(Comparator.comparing(Tribut::getSkillLevel).reversed())
+                .toList();
+
     }
 
 }

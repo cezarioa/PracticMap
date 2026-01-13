@@ -35,10 +35,7 @@ public class Main {
         String filename2 = "src/main/resources/gifts.json";
         String filename3 = "src/main/resources/tributes.json";
 
-        Ereignis Ereignis1 = new Ereignis();
-        Ereignis Ereignis2 = new Ereignis();
-        Ereignis Ereignis3 = new Ereignis();
-        Ereignis Ereignis4 = new Ereignis();
+
 
         EreignisRepo EreignisRepo = new EreignisRepo(filename1);
         TributRepo TributRepo = new TributRepo(filename2);
@@ -54,9 +51,13 @@ public class Main {
 
         MixController mixController=new MixController(TributService, EreignisService, GeschenkService);
         mixController.showTributAndCountAll();
+        TributController.showByDistrict(7);
+        TributController.showSortedBySkillLevel();
 
 
-        EreignisController.showAll();
+
+
+        TributController.showAll();
 
 
         

@@ -30,5 +30,12 @@ public class TributController {
     public void showCount(){
         System.out.println(TributService.countAll());
     }
+    public void showByDistrict(int district){
+        System.out.println(TributService.findByDistrict(district));
+    }
+
+    public void showSortedBySkillLevel(){
+        System.out.println(TributService.sortBySkillLevelDesc());
+    }
 
 }

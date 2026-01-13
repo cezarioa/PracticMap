@@ -3,12 +3,12 @@ package Model;
 public class Tribut {
     int id;
     String name;
-    String district;
+    int district;
     int skillLevel;
     TributStatus status;
 
     public enum TributStatus {
-        LEBENDIG("LEBENDIG"),
+        ALIVE("ALIVE"),
         TOT("TOT");
 
         private final String status;
@@ -30,7 +30,7 @@ public class Tribut {
     }
     public Tribut() {
     }
-    public Tribut(int id, String name, String district, int skillLevel, TributStatus status) {
+    public Tribut(int id, String name, int district, int skillLevel, TributStatus status) {
         this.id = id;
         this.name = name;
         this.district = district;
@@ -54,11 +54,11 @@ public class Tribut {
         this.name = name;
     }
 
-    public String getDistrict() {
+    public int getDistrict() {
         return district;
     }
 
-    public void setDistrict(String district) {
+    public void setDistrict(int district) {
         this.district = district;
     }
 
