@@ -1,3 +1,14 @@
+import Controller.EreignisController;
+import Controller.GeschenkController;
+import Controller.MixController;
+import Controller.TributController;
+import Model.Ereignis;
+import Repo.EreignisRepo;
+import Repo.GeschenkRepo;
+import Repo.TributRepo;
+import Service.EreignisService;
+import Service.GeschenkService;
+import Service.TributService;
 import tools.jackson.databind.ObjectMapper;
 
 import java.io.File;
@@ -5,7 +16,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 //replace Class with your actual class name
-//replace Model cu classa actuala
+//replace Ereignis cu classa actuala
 
 public class Main {
     static String filename="";
@@ -18,26 +29,36 @@ public class Main {
 
     }
 
+
     public static void main(String[] args) {
-        String filename1 = "";
-        
-        Model model1 = new Model();
-        Model model2 = new Model();
-        Model model3 = new Model();
-        Model model3 = new Model();
+        String filename1 = "src/main/resources/events.json";
+        String filename2 = "src/main/resources/gifts.json";
+        String filename3 = "src/main/resources/tributes.json";
 
-        ModelRepo modelRepo = new ModelRepo(filename1);
-        ModelService modelService = new ModelService(modelRepo);
-        ModelController modelController = new ModelController(modelService);
+        Ereignis Ereignis1 = new Ereignis();
+        Ereignis Ereignis2 = new Ereignis();
+        Ereignis Ereignis3 = new Ereignis();
+        Ereignis Ereignis4 = new Ereignis();
 
-        modelController.add(model1);
-        modelController.add(model2);
-        modelController.add(model3);
-        modelController.delete("Max Mustermann");
-        modelController.update("cristi", model4);
-        modelController.showAll();
+        EreignisRepo EreignisRepo = new EreignisRepo(filename1);
+        TributRepo TributRepo = new TributRepo(filename2);
+        GeschenkRepo GeschenkRepo = new GeschenkRepo(filename3);
 
-        String filename2 = "";
+        EreignisService EreignisService = new EreignisService(EreignisRepo);
+        TributService TributService = new TributService(TributRepo);
+        GeschenkService GeschenkService = new GeschenkService(GeschenkRepo);
+
+        EreignisController EreignisController = new EreignisController(EreignisService);
+        TributController TributController = new TributController(TributService);
+        GeschenkController GeschenkController = new GeschenkController(GeschenkService);
+
+        MixController mixController=new MixController(TributService, EreignisService, GeschenkService);
+        mixController.showTributAndCountAll();
+
+
+        EreignisController.showAll();
+
+
         
 
 
